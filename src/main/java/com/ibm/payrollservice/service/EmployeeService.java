@@ -14,8 +14,12 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    @Autowired
+    public EmployeeService(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
 
     public Employee saveEmployee(EmployeeRequest employeeRequest) {
         Employee employee = Employee.build(0, employeeRequest.getName(), employeeRequest.getRole());
